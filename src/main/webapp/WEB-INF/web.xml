@@ -1,0 +1,39 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+  <display-name>Archetype Created Web Application</display-name>
+  <filter>
+    <filter-name>CharacterFilter</filter-name>
+    <filter-class>Filter.CharacterFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterFilter</filter-name>
+    <servlet-name>MyServlet</servlet-name>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>MyServlet</servlet-name>
+    <servlet-class>Servlet.MyServlet</servlet-class>
+  </servlet>
+    <servlet>
+        <servlet-name>KMJServlet</servlet-name>
+        <servlet-class>Servlet.KMJServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/czk</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>KMJServlet</servlet-name>
+    <url-pattern>/kmj</url-pattern>
+  </servlet-mapping>
+
+
+
+</web-app>

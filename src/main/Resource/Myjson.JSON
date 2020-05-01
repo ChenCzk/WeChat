@@ -1,0 +1,12 @@
+{
+  "template_list": [
+    {
+      "template_id": "2NjP2Ch13oSarUqSuLYGHwYRl-kJcI0ewmtSGWSQ9Nc",
+      "title": "这个第一个测试模版",
+      "primary_industry": "",
+      "deputy_industry": "",
+      "content": "{ {first.DATA} }\n  关键词1：{ {keyword1.DATA} }           \n  关键词2：{ {keyword2.DATA} }\n  关键词3：{ {keyword3.DATA} }                       \n  { {remark.DATA} }",
+      "example": ""
+    }
+  ]
+}

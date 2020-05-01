@@ -1,0 +1,37 @@
+<!--
+ToUserName	    开发者微信号
+FromUserName	发送方帐号（一个OpenID）
+CreateTime	    消息创建时间 （整型）
+MsgType	    消息类型，文本为text
+Content	    文本消息内容
+MsgId	    消息id，64位整型
+-->
+
+<xml>
+    <ToUserName><![CDATA[gh_5f95ef447cc7]]></ToUserName>
+    <FromUserName><![CDATA[oSpekwbWqcmdIYPLemwEZS_k5Poc]]></FromUserName>
+    <CreateTime>1571125762</CreateTime>
+    <MsgType><![CDATA[text]]></MsgType>
+    <Content><![CDATA[了]]></Content>
+    <MsgId>22493109756365295</MsgId>
+</xml>
+        <!--
+
+            <xml>
+                <ToUserName><![CDATA[oSpekwbWqcmdIYPLemwEZS_k5Poc]]></ToUserName>
+                <FromUserName><![CDATA[gh_5f95ef447cc7]]></FromUserName>
+                <CreateTime>1571150404</CreateTime>
+                <MsgType><![CDATA[text]]></MsgType>
+                <Content><![CDATA[HelloWorld]]></Content>
+            </xml>
+
+        -->
+<xml>
+    <ToUserName><![CDATA[gh_5f95ef447cc7]]></ToUserName>
+    <FromUserName><![CDATA[oSpekwbWqcmdIYPLemwEZS_k5Poc]]></FromUserName>
+    <CreateTime>1571487411</CreateTime>
+    <MsgType><![CDATA[video]]></MsgType>
+    <MediaId><![CDATA[WiICxhxBNSNFDtNc0St5rQA6PM6CTErxvl5Fu8RVeuqFsi_cyI9i25gENHvhjQmK]]></MediaId>
+    <ThumbMediaId><![CDATA[V6hqLmWo7M9VjK60IRGbkY3qH5g-uqM2U5ipt15Ip-YxL1xjzD829A-ZxdlVbvny]]></ThumbMediaId>
+    <MsgId>22498290508629053</MsgId>
+</xml>
