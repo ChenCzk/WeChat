@@ -6,16 +6,17 @@ import java.net.URL;
 
 public class Util {
     /*
-    *  发送到指定地址，返回字符串
+    *  get请求
     * */
     public static String get(String url){
         StringBuffer sb= null;
         try {
+            // 发送
             URL getUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) getUrl.openConnection();
             connection.connect();
 
-            // 取得输入流，并使用Reader读取
+            // 接收
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
             sb = new StringBuffer();
             String line = "";
@@ -30,7 +31,7 @@ public class Util {
     }
 
     /*
-    *  按钮设置
+    *  post请求
     * */
     public static String post(String url,String json){
         StringBuffer sb= null;

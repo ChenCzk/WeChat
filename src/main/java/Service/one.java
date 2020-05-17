@@ -6,7 +6,6 @@ import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import pojo.Button.*;
 import util.Util;
-
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.URL;
@@ -20,14 +19,14 @@ public class one {
     @Test
     public void createMenu() {
         String url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
-        url = url.replace("ACCESS_TOKEN", WXService.getToken());
+        url = url.replace("ACCESS_TOKEN", WXService.checkToken());
 
         //一级菜单
         clickButton click = new clickButton("点击按钮", "1");
 
-        //一级菜单
+        //二级菜单
         pic_photo_or_album_button subClick = new pic_photo_or_album_button("图片识别文字", "2");
-        viewButton subView = new viewButton("百度", "http://www.baidu.com");//二级菜单
+        viewButton subView = new viewButton("百度", "http://www.baidu.com");
         List<AbstractButton> list = new ArrayList<>();
         list.add(subClick);
         list.add(subView);
@@ -52,7 +51,7 @@ public class one {
     @Test
     public void createIndustry() {
         String str = "https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token=ACCESS_TOKEN";
-        String token = WXService.getToken();
+        String token = WXService.checkToken();
         str = str.replace("ACCESS_TOKEN", token);
         String data = "{\n" +
                 "    \"industry_id1\":\"1\",\n" +
@@ -68,7 +67,7 @@ public class one {
     @Test
     public void getIndusty() {
         String str = "https://api.weixin.qq.com/cgi-bin/template/get_industry?access_token=ACCESS_TOKEN";
-        str = str.replace("ACCESS_TOKEN", WXService.getToken());
+        str = str.replace("ACCESS_TOKEN", WXService.checkToken());
 
         String s = Util.get(str);
         System.out.println(s);
@@ -81,7 +80,7 @@ public class one {
     @Test
     public void getAllTemplate() {
         String str = "https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token=ACCESS_TOKEN";
-        str = str.replace("ACCESS_TOKEN", WXService.getToken());
+        str = str.replace("ACCESS_TOKEN", WXService.checkToken());
 
         String s = Util.get(str);
         System.out.println(s);
@@ -93,7 +92,7 @@ public class one {
     @Test
     public void geetTemplateId() {
         String str = "https://api.weixin.qq.com/cgi-bin/template/api_add_template?access_token=ACCESS_TOKEN";
-        String token = WXService.getToken();
+        String token = WXService.checkToken();
         str = str.replace("ACCESS_TOKEN", token);
         String data = "{\n" +
                 "    \"template_id_short\":\"TM00015\"\n" +   //模板库中模板的编号，有“TM**”和“OPENTMTM**”等形式
@@ -107,7 +106,7 @@ public class one {
      * */
     public void deleteTemplateByTemplateId() {
         String str = "https://api.weixin.qq.com/cgi-bin/template/del_private_template?access_token=ACCESS_TOKEN";
-        String token = WXService.getToken();
+        String token = WXService.checkToken();
         str = str.replace("ACCESS_TOKEN", token);
         String data = " {\n" +
                 "     \"template_id\" : \"Dyvp3-Ff0cnail_CDSzk1fIc6-9lOkxsQE7exTJbwUE\"\n" +
@@ -124,7 +123,7 @@ public class one {
     public void postTemplate() {
         try {
             String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
-            url = url.replace("ACCESS_TOKEN", WXService.getToken());
+            url = url.replace("ACCESS_TOKEN", WXService.checkToken());
             String s = FileUtils.readFileToString(new File("F:\\idea\\testWX2\\src\\main\\Resource\\template.JSON"), "UTF-8");
             System.out.println(s);
             String post = Util.post(url, s);
@@ -146,7 +145,7 @@ public class one {
         File file = new File(path);
         //地址
         String url = "http://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
-        url = url.replace("ACCESS_TOKEN",WXService.getToken()).replace("TYPE",type);
+        url = url.replace("ACCESS_TOKEN",WXService.checkToken()).replace("TYPE",type);
         try {
             URL urlObj= new URL(null, url, new sun.net.www.protocol.https.Handler());
             // 强转为安全连接 https
@@ -210,7 +209,7 @@ public class one {
     * */
     public static String getMedia(String id){
         String url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID";
-        url = url.replace("ACCESS_TOKEN",WXService.getToken()).replace("MEDIA_ID",id);
+        url = url.replace("ACCESS_TOKEN",WXService.checkToken()).replace("MEDIA_ID",id);
         String s = Util.get(url);
         return s;
 

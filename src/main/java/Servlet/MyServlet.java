@@ -21,9 +21,12 @@ public class MyServlet extends HttpServlet {
 
         //将收到的信息封装到map
         Map map = WXService.parseRequest(request.getInputStream());
-        //发送文本消息
+
+        // 设置应答
+        String xmlRes = WXService.respXML(request, map);
+        // 响应
         PrintWriter out = response.getWriter();
-        out.write(WXService.respXML(request, map));
+        out.write(xmlRes);
         out.flush();
         out.close();
 
@@ -40,7 +43,7 @@ public class MyServlet extends HttpServlet {
         //echostr随机字符串
         String echostr = request.getParameter("echostr");
 
-        if (WXService.check(timestamp, nonce, signature)) {
+        if (WXService.check(timestamp, nonce, signature)) {  //校验
             //若确认此次GET请求来自微信服务器，请原样返回echostr参数内容，
             PrintWriter out = response.getWriter();
             out.print(echostr);

@@ -23,10 +23,13 @@ public class test {
     public static final String API_KEY = "5dxFpbjpETpPxPYTDogDqQMK";
     public static final String SECRET_KEY = "eLSmGAosBSRuC2BY1PY5Qbaiq4CGX3gY";
 
+    /**
+     * 设置桌面布局
+     * */
     @Test
     public void test() {
         String url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
-        url = url.replace("ACCESS_TOKEN", WXService.getToken());
+        url = url.replace("ACCESS_TOKEN", WXService.checkToken());
         List mylist = new ArrayList();
 
         //一级菜单
@@ -85,7 +88,7 @@ public class test {
         String id = "zjKyMEImW44lDeWuk9YedVR24LTLbhgeTMLT2eUsHsXXBWR06WHPdg9QWfkzudNZ";
         String media = one.getMedia(id);
         System.out.println(media);
-        System.out.println(WXService.getToken());
+        System.out.println(WXService.checkToken());
     }
     @Test
     public void test05() throws IOException {

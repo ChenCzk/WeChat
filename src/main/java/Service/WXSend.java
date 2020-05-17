@@ -4,7 +4,9 @@ import com.thoughtworks.xstream.XStream;
 import pojo.*;
 
 import java.util.Map;
-
+/**
+ * 用来响应客户端的消息
+ * */
 public class WXSend {
 
     /*

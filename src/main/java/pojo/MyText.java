@@ -3,7 +3,11 @@ package pojo;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import java.util.Map;
-
+/**
+ * 消息类
+ *      将map,内容-》对应XML的POJO
+ *
+ * */
 @XStreamAlias("xml")
 public class MyText extends base {
     @XStreamAlias("Content")
