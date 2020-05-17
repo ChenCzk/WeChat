@@ -14,8 +14,6 @@ public class CharacterFilter implements javax.servlet.Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, javax.servlet.FilterChain chain) throws ServletException, IOException {
         if (encoding!=null){
             req.setCharacterEncoding(encoding);
-            String characterEncoding = req.getCharacterEncoding();
-            System.out.println(characterEncoding+"前端格式");
             resp.setContentType("text/html;charset="+encoding);
         }
         chain.doFilter(req, resp);

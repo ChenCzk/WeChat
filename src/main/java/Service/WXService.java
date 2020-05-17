@@ -118,7 +118,7 @@ public class WXService {
 
     /**************************** 接收/响应 消息***************************************/
 
-    // 接受消息
+    // 接受消息处理,接下来就响应
     public static Map parseRequest(InputStream inputStream) {
         // 获取微信服务器发送过来的XML文件,XML—》Map
         // 1.检查token
@@ -150,8 +150,9 @@ public class WXService {
         // 根据接收消息类型,选择要应答的内容(视频,文本等)
         String msgType = map.get("MsgType"); //判断信息类型
         String message = map.get("Content"); //用户信息内容
+
         System.out.println("用户信息发送" + msgType + "类型的信息");
-        System.out.println(map);
+        System.out.println("用户信息"+ map);
 
         switch (msgType) {
             case "text":  //如果是文本，回复文本
@@ -184,8 +185,9 @@ public class WXService {
                 str = "location";
                 return WXSend.sendText(map, str);  //将文本装换为XML格式的字符串
             case "event":     //如果是事件类型，回复文本
-                String str1 = dealEvent(map);
-                return str1;
+                 dealEvent(map);
+                 return null;
+
         }
         return null;
     }
@@ -193,7 +195,7 @@ public class WXService {
 
 
 
-    /**************************** 响应消息 的特殊处理***************************************/
+    /**************************** 响应消息 的event Image Click特殊处理***************************************/
 
     // 响应消息 中的处理图片,图片转文字
     // 百度照片识别
@@ -223,28 +225,37 @@ public class WXService {
     }
 
     // 响应消息 中的处理事件
-    private static String dealEvent(Map<String, String> map) {
+    private static void dealEvent(Map<String, String> map) {
         String event = map.get("Event");
         switch (event){
             case "CLICK":
-                return dealClickEvent(map);
+                dealClickEvent(map);
+                break;
+
+            case "subscribe":
+                System.out.println(map.get("FromUserName")+"订阅了");
+                break;
+
+            case "unsubscribe":
+                System.out.println(map.get("FromUserName")+"取消订阅了");
+
         }
-        return null;
+
     }
 
     // 处理事件 中的点击事件
-    private static String dealClickEvent(Map<String, String> map) {
+    private  static void dealClickEvent(Map<String, String> map) {
         String eventKey = map.get("EventKey");
         switch (eventKey){
             case "1"://一级菜单的按钮
-                String s = WXSend.sendText(map, "你点击了一级点击按钮");
-                return s;
+                String openId = map.get("FromUserName");
+                one.postTemplate(openId);
+                break;
             case "2":
                 String s2 = WXSend.sendText(map, "你点击了二级点击按钮");
-                return s2;
+                break;
         }
 
-        return null;
     }
 
 

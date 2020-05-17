@@ -16,8 +16,8 @@ public class base {
 
 
     public base(Map<String,String> requestMap){
-        this.setFromUserName(requestMap.get("ToUserName"));
-        this.setToUserName(requestMap.get("FromUserName"));
+        this.setFromUserName(requestMap.get("ToUserName"));   // 这里要反转
+        this.setToUserName(requestMap.get("FromUserName"));   // 这里要反转
         this.setCreateTime(String.valueOf(System.currentTimeMillis() / 1000));
     }
 

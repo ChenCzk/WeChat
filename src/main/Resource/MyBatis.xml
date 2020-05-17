@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>  <!-- 配置-->
+
+
+    <!-- 配置环境-->
+    <environments default="work">
+        <!-- 环境名称-->
+        <environment id="work">
+            <!-- 事务管理器，默认JDBC事务-->
+            <transactionManager type="JDBC"/>
+            <!-- 数据源 -->
+            <dataSource type="UNPOOLED">
+                <!-- 加载驱动-->
+                <property name="driver" value="${database.driver}" />
+                <!-- 加载数据库-->
+                <property name="url" value="${database.url}" />
+                <!-- 用户名-->
+                <property name="username" value="${database.username}" /> <!-- 属性调用-->
+                <!-- 密码-->
+                <property name="password" value="${database.password}" /> <!-- 属性调用-->
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 映射连接-->
+
+
+        <!--<package name="com.czk.mapper"/>&lt;!&ndash;mapper的包名&ndash;&gt;-->
+        <!--<mapper class="com.czk.mapper.aDbMapper"/>&lt;!&ndash;mapper的类名&ndash;&gt;-->
+    </mappers>
+</configuration>

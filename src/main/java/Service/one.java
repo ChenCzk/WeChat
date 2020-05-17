@@ -11,7 +11,15 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+/**
+ *  模板消息内容  {{first.DATA}} 关键词1：{{keyword1.DATA}} 关键词2：{{keyword2.DATA}} 关键词3：{{keyword3.DATA}} {{remark.DATA}}
+ *
+ *  菜单布局创建
+ *  模版推送
+ *  素材管理
+ * */
 public class one {
     /*
      *  菜单创建
@@ -115,20 +123,16 @@ public class one {
         System.out.println(s);
     }
 
-    /*
-     *  发送模板
-     *
-     * */
-    @Test
-    public void postTemplate() {
+    // 推送模块！！！
+    public static void postTemplate(String openId) {
         try {
             String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
             url = url.replace("ACCESS_TOKEN", WXService.checkToken());
             String s = FileUtils.readFileToString(new File("F:\\idea\\testWX2\\src\\main\\Resource\\template.JSON"), "UTF-8");
-            System.out.println(s);
-            String post = Util.post(url, s);
+            s =  s.replace("xxx",openId); // 推送消息
 
-            System.out.println(post);
+            String post = Util.post(url, s); //
+
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,10 +1,10 @@
 {
-  "touser":"oSpekwd6XMnUp0Z7HtHSI8VQTo6o",
-  "template_id":"lG_x8WGYjG3vI89V9g_Id4oVzBplggQqlE1SNsIjU6o",
-  "url":"http://mmbiz.qpic.cn/mmbiz_jpg/DBc6RhFYMcAqE1k7AdIiaQJSTXWKPe1PscLTURrr9f35ZGN4p860Lq7ZLQS1wfckhoxvKibPsfClKkMsLoYicwEibw/0",
+  "touser":"xxx",
+  "template_id":"7O1sDAZbm1rgdPFIX9A0GnVZNi7Zv5bJoI0BkReugQU",
+  "url":"http://www.baidu.com",
   "data":{
     "first": {
-      "value":"卢小姐下午好！",
+      "value":"您好！",
       "color":"#173177"
     },
     "keyword1":{
@@ -12,15 +12,15 @@
       "color":"#173177"
     },
     "keyword2": {
-      "value":"学习中。。。",
+      "value":"测试中。。。",
       "color":"#173177"
     },
     "keyword3": {
-      "value":"一块钱",
+      "value":"aaaa",
       "color":"#173177"
     },
     "remark":{
-      "value":"路上安全哦！",
+      "value":"标记位！",
       "color":"#173177"
     }
   }

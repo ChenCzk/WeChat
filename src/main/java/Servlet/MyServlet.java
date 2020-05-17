@@ -24,11 +24,15 @@ public class MyServlet extends HttpServlet {
 
         // 设置应答
         String xmlRes = WXService.respXML(request, map);
-        // 响应
-        PrintWriter out = response.getWriter();
-        out.write(xmlRes);
-        out.flush();
-        out.close();
+        if (xmlRes!=null){
+            // 响应
+            PrintWriter out = response.getWriter();
+            out.write(xmlRes);
+            out.flush();
+            out.close();
+        }
+
+
 
     }
 

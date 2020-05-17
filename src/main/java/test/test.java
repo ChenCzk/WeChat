@@ -4,10 +4,12 @@ import Service.WXService;
 import Service.one;
 import com.baidu.aip.ocr.AipOcr;
 import net.sf.json.JSONObject;
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import pojo.Button.*;
 import util.Util;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -109,6 +111,21 @@ public class test {
         System.out.println(new  String(bytes));
         inputStream.close();
         socket.close();
+
+    }
+    @Test
+    public  void test07(){
+        try {
+            String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
+            url = url.replace("ACCESS_TOKEN", WXService.checkToken());
+            String s = FileUtils.readFileToString(new File("F:\\idea\\testWX2\\src\\main\\Resource\\template.JSON"), "UTF-8");
+            s = s.replace("xxx","adasd");
+            System.out.println(s);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

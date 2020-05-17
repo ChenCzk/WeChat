@@ -87,8 +87,8 @@ public class demo {
 
     @Test
     public void test03() {
-        String token = WXService.getToken();
-        String token1 = WXService.getToken();
+        String token = WXService.checkToken();
+        String token1 = WXService.checkToken();
         System.out.println(token);//26_j5ZU98GN0ssLQK_nc9TfIud7ef0-z8yNnuKUqDttIhbhi_jh4rE6v4gMPDk7CkYl5ogwrrdeYoSMNMzicRNGsAZcF681ptWgC6d3UK-02YBSjpUeWUw216ypxjILXDgAFAYKQ
         System.out.println(token1);
     }

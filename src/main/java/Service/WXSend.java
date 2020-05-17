@@ -5,15 +5,12 @@ import pojo.*;
 
 import java.util.Map;
 /**
- * 用来响应客户端的消息
+ * 转换成给微信服务器的消息。
+ * 转换成XML格式的字符串,然后用于发送给微信服务器。
  * */
 public class WXSend {
 
-    /*
-     * 发送特定文本
-     *      map: 接收的信息map集合
-     *      String: 发送文字
-     * */
+    // 发送文本对应的XML格式的字符传
     public static String sendText(Map<String, String> map, String text) {
         MyText myText = new MyText(map, text);  //将 map 封装成 Pojo
         //获取XML格式的文本
@@ -24,7 +21,7 @@ public class WXSend {
         return xml;
     }
     /*
-    * 返回图片
+    * 返回图片对应的XML格式的字符传
     * */
     public static String  sendImage(Map<String, String> map, String message) {
         if (message.equals("莫梓琪")) {
@@ -37,13 +34,13 @@ public class WXSend {
             s.processAnnotations(ClassType.classes);
             // 调用toXML方法转换为XML格式的字符串
             String xml = s.toXML(myImage);//Pojo ->XML
-            System.out.println("公众号响应的XML");
-            System.out.println(xml);
+
             return xml;
         }
         return null;
     }
 
+    // 返回视频对应的XML格式的字符传
     public static String sendVideo(Map<String, String> map, String message){
         if (message.equals("视频")){
             Video video = new Video();
@@ -56,8 +53,7 @@ public class WXSend {
             XStream xs  = new XStream();
             xs.processAnnotations(ClassType.classes);
             String xml = xs.toXML(myVideo);
-            System.out.println("公众号响应的XML");
-            System.out.println(xml);
+
             return xml;
         }
         return null;
