@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+
+<mapper namespace="mapper.userMapper">
+<resultMap id="userMap" type="pojo.SQL.User">
+    <result property="tagid_list" column="tagid_list" typeHandler="typeHandle.MyTypeHander"/>
+</resultMap>
+    <insert id="addUser" parameterType="pojo.SQL.User">
+            insert into
+                user
+                (
+                    subscribe,
+                    openid,
+                    nickname,
+                    sex,
+                    city,
+                    country,
+                    province,
+                    LANGUAGE,
+                    headimgurl,
+                    subscribe_time,
+                    unionid,
+                    remark,
+                    groupid,
+                    tagid_list,
+                    subscribe_scene
+                )
+            values
+                (
+                    #{subscribe},
+                    #{openid},
+                    #{nickname},
+                    #{sex},
+                    #{city},
+                    #{country},
+                    #{province},
+                    #{LANGUAGE},
+                    #{headimgurl},
+                    #{subscribe_time},
+                    #{unionid},
+                    #{remark},
+                    #{groupid},
+                    #{tagid_list},
+                    #{subscribe_scene}
+                )
+    </insert>
+
+    <update id="changeSubscribe" >
+        update user set subscribe = #{i} where openid = #{openId}
+    </update>
+
+    <select id="exitUser" parameterType="String" resultType="Integer"> <!--1:存在该用户-->
+        select count(openid) from user where openid = #{openId}
+    </select>
+
+    <select id="IsSubscribe" parameterType="String" resultType="Integer"> <!--1:存在该用户-->
+        select subscribe from user where openid = #{openId}
+    </select>
+</mapper>

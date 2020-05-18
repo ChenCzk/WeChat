@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>  <!-- 配置-->
-
+    <typeHandlers>
+        <typeHandler handler="typeHandle.MyTypeHander"/>
+    </typeHandlers>
 
     <!-- 配置环境-->
     <environments default="work">
@@ -25,7 +27,8 @@
     <mappers>
         <!-- 映射连接-->
 
-
+        <mapper resource="mapper/userMapper.xml"/>
+        <mapper resource="mapper/FirstMapper.xml"/>
         <!--<package name="com.czk.mapper"/>&lt;!&ndash;mapper的包名&ndash;&gt;-->
         <!--<mapper class="com.czk.mapper.aDbMapper"/>&lt;!&ndash;mapper的类名&ndash;&gt;-->
     </mappers>

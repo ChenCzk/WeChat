@@ -1,0 +1,4 @@
+database.driver=com.mysql.cj.jdbc.Driver
+database.url=jdbc:mysql://gz-cynosdbmysql-grp-o9572jkj.sql.tencentcdb.com:29269/MyDB?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+database.username=root
+database.password=kai19970317

@@ -3,13 +3,13 @@ package Service;
 import com.baidu.aip.ocr.AipOcr;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.ibatis.annotations.Param;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import pojo.MyToken;
 import util.Util;
-
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
@@ -146,7 +146,7 @@ public class WXService {
 
 
     // 响应消息
-    public static String respXML(HttpServletRequest request, Map<String, String> map) {
+    public static String respXML(HttpServletRequest request, Map<String, String> map) throws IOException {
         // 根据接收消息类型,选择要应答的内容(视频,文本等)
         String msgType = map.get("MsgType"); //判断信息类型
         String message = map.get("Content"); //用户信息内容
@@ -225,19 +225,38 @@ public class WXService {
     }
 
     // 响应消息 中的处理事件
-    private static void dealEvent(Map<String, String> map) {
+    private static void dealEvent(Map<String, String> map) throws IOException {
         String event = map.get("Event");
+        String openId = map.get("FromUserName");
+
         switch (event){
             case "CLICK":
                 dealClickEvent(map);
                 break;
 
             case "subscribe":
-                System.out.println(map.get("FromUserName")+"订阅了");
+                // 先判断数据库是否有此人
+                if (WXUser.exitUser(openId) == 0){
+                    // 没有此人,添加用户
+                    WXUser.addUser(openId);
+                    System.out.println("已存入数据库");
+                }else {
+                    // 已经存在此人,则更改该用户的订阅状态
+                    WXUser.changeSubscribe(1,openId);
+                    System.out.println("该用户以前订阅过，现在重新订阅");
+
+                }
+                System.out.println(map.get("FromUserName")+"订阅了,");
                 break;
 
             case "unsubscribe":
+                System.out.println(openId);
+
+                // 取消订阅
+                WXUser.changeSubscribe(0, openId);
+
                 System.out.println(map.get("FromUserName")+"取消订阅了");
+                break;
 
         }
 
